@@ -1,2 +1,2 @@
-# Stock-Market-Management-System
-A stock market management system with currency converter made with Java
+# Stock-Management-System
+A stock management system made with Java
