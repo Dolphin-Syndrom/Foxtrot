@@ -40,15 +40,15 @@ public class product extends javax.swing.JFrame {
     public void Connect()
     {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/foxtrot", "root","");
             
             
             
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(vendor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(product.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(vendor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(product.class.getName()).log(Level.SEVERE, null, ex);
         }
    
     }
@@ -89,7 +89,7 @@ public class product extends javax.swing.JFrame {
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(vendor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(product.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     
@@ -129,11 +129,11 @@ public class product extends javax.swing.JFrame {
         txtrprice = new javax.swing.JTextField();
         txtqty = new javax.swing.JTextField();
         txtlevel = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        add = new javax.swing.JButton();
+        edit = new javax.swing.JButton();
+        clear = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
+        close = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -143,7 +143,7 @@ public class product extends javax.swing.JFrame {
         jLabel1.setText("Product");
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 51));
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 102), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255), new java.awt.Color(0, 0, 0)));
         jPanel1.setForeground(new java.awt.Color(0, 0, 51));
 
         jLabel2.setBackground(new java.awt.Color(204, 204, 204));
@@ -241,27 +241,46 @@ public class product extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jButton1.setText("Add");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        add.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        add.setText("Add");
+        add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Edit");
-
-        jButton3.setText("Clear");
-
-        jButton4.setText("Delete");
-
-        jButton5.setText("Close");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        edit.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        edit.setText("Edit");
+        edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                editActionPerformed(evt);
             }
         });
 
+        clear.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        clear.setText("Clear");
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
+            }
+        });
+
+        delete.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        delete.setText("Delete");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
+
+        close.setText("Close");
+        close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeActionPerformed(evt);
+            }
+        });
+
+        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -270,6 +289,11 @@ public class product extends javax.swing.JFrame {
                 "ProductID", "ProductName", "Description", "Barcode", "CostPrice", "RetailPrice", "Qty", "RLevel"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -289,15 +313,15 @@ public class product extends javax.swing.JFrame {
                                 .addGap(33, 33, 33)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(24, 24, 24)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -313,11 +337,11 @@ public class product extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
         );
 
@@ -325,7 +349,7 @@ public class product extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
         
            try {
@@ -352,7 +376,7 @@ public class product extends javax.swing.JFrame {
             pst.executeUpdate();
             
             
-            JOptionPane.showMessageDialog(this, "Product Addeddddd");
+            JOptionPane.showMessageDialog(this, "Product Added");
             
              txtpname.setText("");
              txtdes.setText("");
@@ -369,29 +393,126 @@ public class product extends javax.swing.JFrame {
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(vendor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(product.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+         
+    }//GEN-LAST:event_addActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+                               
+
+    
+    
+    private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
         // TODO add your handling code here:
         
         this.setVisible(false);
         
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_closeActionPerformed
+
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+        df =  (DefaultTableModel)jTable1.getModel();
+        int selected = jTable1.getSelectedRow();
+       
+        int id = Integer.parseInt(df.getValueAt(selected, 0).toString());
+        
+        
+            String pname = txtpname.getText();
+            String des = txtdes.getText();
+            String barcode = txtbarcode.getText();
+            String costprice  = txtcprice.getText();
+            String retailprice  = txtrprice.getText();
+            String qty  = txtqty.getText();
+            String rlevel  = txtlevel.getText();                  
+        try {
+            // TODO add your handling code here:
+
+             pst = con.prepareStatement("update product set pname = ?, description = ?, barcode = ?, cprice = ?, rprice = ?, qty = ?, rlevel = ? where id = ?");
+            pst.setString(1, pname);
+            pst.setString(2, des);
+            pst.setString(3, barcode);
+            pst.setString(4, costprice);
+            pst.setString(5, retailprice);
+            pst.setString(6, qty);
+            pst.setString(7, rlevel);
+            pst.setInt(5, id);
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Product Updated");
+            
+             txtpname.setText("");
+             txtdes.setText("");
+             txtbarcode.setText("");
+             txtcprice.setText("");
+              txtrprice.setText("");
+             txtqty.setText("");
+              txtlevel.setText("");             load();
+              add.setEnabled(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(product.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_editActionPerformed
+
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+             txtpname.setText("");
+             txtdes.setText("");
+             txtbarcode.setText("");
+             txtcprice.setText("");
+             txtrprice.setText("");
+             txtqty.setText("");
+             txtlevel.setText("");
+             load();
+             add.setEnabled(true);
+    }//GEN-LAST:event_clearActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+  df =  (DefaultTableModel)jTable1.getModel();
+         int selected = jTable1.getSelectedRow();
+       
+         int id = Integer.parseInt(df.getValueAt(selected, 0).toString());
+        
+        
+          
+            
+        try {
+            // TODO add your handling code here:
+
+            pst = con.prepareStatement("delete from product where id = ?");
+           
+            pst.setInt(1, id);
+            
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Product Deleted");
+            
+             txtpname.setText("");
+             txtdes.setText("");
+             txtbarcode.setText("");
+             txtcprice.setText("");
+             txtrprice.setText("");
+             txtqty.setText("");
+             txtlevel.setText("");
+             load();
+             add.setEnabled(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(product.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }//GEN-LAST:event_deleteActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+       df = (DefaultTableModel)jTable1.getModel();
+        int selected = jTable1.getSelectedRow();
+        int id = Integer.parseInt(df.getValueAt (selected, 0).toString());
+        
+        txtpname.setText(df.getValueAt(selected, 1).toString());
+        txtdes.setText(df.getValueAt(selected,2).toString());
+         txtbarcode.setText(df.getValueAt(selected, 3).toString());
+         txtcprice.setText(df.getValueAt(selected, 4).toString());
+         txtrprice.setText(df.getValueAt(selected,5).toString());
+         txtqty.setText(df.getValueAt(selected, 6).toString());
+         txtlevel.setText(df.getValueAt(selected, 7).toString());
+         
+         add.setEnabled(false);
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -429,11 +550,11 @@ public class product extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton add;
+    private javax.swing.JButton clear;
+    private javax.swing.JButton close;
+    private javax.swing.JButton delete;
+    private javax.swing.JButton edit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
