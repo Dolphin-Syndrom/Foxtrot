@@ -49,27 +49,11 @@ public class foxtrot extends javax.swing.JFrame {
             }
         });
 
-        buybutton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        buybutton.setText("Buy");
-        buybutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buybuttonActionPerformed(evt);
-            }
-        });
-
         productbutton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         productbutton.setText("Product");
         productbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 productbuttonActionPerformed(evt);
-            }
-        });
-
-        about.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        about.setText("About");
-        about.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aboutActionPerformed(evt);
             }
         });
 
@@ -162,26 +146,10 @@ public class foxtrot extends javax.swing.JFrame {
         p.setVisible(true);
     }    
     
-    private void buybuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buybuttonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buybuttonActionPerformed
-/*
-    private void productbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productbuttonActionPerformed
-
-    }//GEN-LAST:event_productbuttonActionPerformed
-*/
-    private void aboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutActionPerformed
-        about a = new about();
-        a.setVisible(true);
-    }//GEN-LAST:event_aboutActionPerformed
-
     private void exitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitbuttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_exitbuttonActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
